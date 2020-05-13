@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const apiRoutes = require("./routes/apiRoutes.js");
+// const apiRoutes = require("./routes/apiRoutes.js");
 const htmlRoutes = require("./routes/htmlRoutes.js");
 
 // If we are in production (Heroku), process.env.PORT is true, 
@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.use("/api", apiRoutes);
+// app.use("/api", apiRoutes);
 app.use("/", htmlRoutes);
 
 
