@@ -1,15 +1,25 @@
 const { Workout } = require("./../models/index")
 
 module.exports = {
-    getWorkouts: async (req, res) => {
+    // Used by api.js to get last workout
+    getWorkout: async (req, res) => {
         try {
-            const workouts = await Workout.find()
-            if (!workouts) {
-                return res.status(404).json({ error: "No workouts found" });
+            const workout = await Workout.find()
+            if (!workout) {
+                return res.status(404).json({ error: "No workout found" });
             }
-            return res.status(200).json(workouts);
+            return res.status(200).json(workout);
         } catch (e) {
             return res.status(403).json({ e });
+        }
+    },
+    //create new workout
+    createWorkout: async(req,res) => {
+        try{
+            const exercise = await Workout.create({type: "workout"});
+            return res.status(200).json(exercise);
+        } catch (e) {
+            console.log("Error creating workout.", e)
         }
     },
     getWorkoutsinRange: async (req, res) => {
