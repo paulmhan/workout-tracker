@@ -22,7 +22,7 @@ module.exports = {
             console.log("Error creating workout.", e)
         }
     },
-    getWorkoutsinRange: async (req, res) => {
+    getWorkoutsInRange: async (req, res) => {
         try {
             const workoutsInRange = await Workout.find({}).limit(7)
             if (!workoutsInRange) {
@@ -32,5 +32,26 @@ module.exports = {
         } catch (e) {
             return res.status(403).json({ e });
         }
+    },
+    addExercise: ({body, params}, res) => {
+        const workoutId = params.id;
+        let savedExercises = [];
+        Workout.find({_id: workoutId})
+            .then(data => {
+                savedExercises = data[0].exercises;
+                res.json(data[0].exercises);
+                let allExercises = [...savedExercises, body];
+                updateWorkout(allExercises);
+            })
+            .catch(err => {
+                res.json(err);
+            });
+
+            function updateWorkout(exercises){
+                Workout.findByIdAndUpdate(workoutId, { exercises }, err => {
+                if (err) throw err
+                })
+            }
     }
+
 };
