@@ -1,14 +1,14 @@
-const { Workout } = require("./../models/index")
+const { Workout } = require("./../models/index");
 
 module.exports = {
     // Used by api.js to get last workout
     getWorkout: async (req, res) => {
         try {
-            const workout = await Workout.find()
-            if (!workout) {
+            const workouts = await Workout.find()
+            if (!workouts) {
                 return res.status(404).json({ error: "No workout found" });
             }
-            return res.status(200).json(workout);
+            return res.status(200).json(workouts);
         } catch (e) {
             return res.status(403).json({ e });
         }
@@ -36,7 +36,7 @@ module.exports = {
     addExercise: ({body, params}, res) => {
         const workoutId = params.id;
         let savedExercises = [];
-        Workout.find({_id: workoutId})
+        Workout.find({ _id: workoutId })
             .then(data => {
                 savedExercises = data[0].exercises;
                 res.json(data[0].exercises);

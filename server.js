@@ -1,7 +1,9 @@
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
-// const logger = require("morgan");
+const logger = require("morgan");
+
+const app = express();
+app.use(logger("dev"));
 
 // If we are in production (Heroku), process.env.PORT is true, 
 // If we are in development it is false, default to 3000
