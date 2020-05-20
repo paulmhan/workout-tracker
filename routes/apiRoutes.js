@@ -6,7 +6,7 @@ router.route("/workouts")
     .get(getWorkout)
     .post(createWorkout)
 
-router.route("/workout/range")
+router.route("/workouts/range")
     .get(getWorkoutsInRange)
 
 router.route("/workouts/:id")
