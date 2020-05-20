@@ -15,7 +15,7 @@ Here is the [deployed application](https://mongoose-workout-tracker.herokuapp.co
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Moment]
-- [Mongo]
-- [Mongoose]
-- [Express] 
+- [Moment](https://momentjs.com)
+- [Mongo](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [Express](https://expressjs.com/)
